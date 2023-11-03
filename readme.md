@@ -15,3 +15,4 @@ This challenge was completed using Python 3.11. However, none of the included fu
 * Primary entry path including execution and performance evaluations in `main.py`
 * Output of final solution in `final_output.json`
 * Module requirements in `requirements.txt`
+* Docker build instruction in `Dockerfile` (just run `docker build -t [username]/[docker-image-name]:latest .`)
