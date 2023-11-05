@@ -1,0 +1,5 @@
+long_url,domain,hash
+https://test1.com/,bit.ly,test1
+https://test2.com/,bit.ly,test2
+https://test3.com/,bit.ly,test3
+https://link.com/,bit.ly,bitlink

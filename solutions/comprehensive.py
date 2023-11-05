@@ -4,37 +4,6 @@ from json import loads as jloads
 
 
 # Function(s)
-def interpret_line(
-    data_input: dict, bitlink_filter: list = None, timestamp_filter: int = None
-) -> bool:
-    """
-    :param data_input: Input line as Python dict
-    :param bitlink_filter: List filter for bitlinks
-    :param timestamp_filter: Integer filter for timestamp year
-    :return: Boolean if input meets filter constraints
-    """
-    out = False
-    req_fields = ["bitlink", "timestamp"]
-    for field in req_fields:
-        if field not in data_input:
-            raise Exception(f"ERROR: missing required field {field} in input")
-    if ~(bitlink_filter is None) and (data_input["bitlink"] in bitlink_filter):
-        out = True
-    elif bitlink_filter is None:
-        out = True
-    else:
-        out = False
-    if ~(timestamp_filter is None) and (
-        str(data_input["timestamp"]).startswith(str(timestamp_filter))
-    ):
-        out = True
-    elif timestamp_filter is None:
-        out = True
-    else:
-        out = False
-    return out
-
-
 def interpret_file(fp: Path, count_dict: dict, timestamp_filter: int = None) -> dict:
     """
     :param fp: filepath to emulate stream of data
