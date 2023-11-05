@@ -9,7 +9,7 @@ from pathlib import Path
 
 class MyTestCase(unittest.TestCase):
     def test_interpret_file_1(self):
-        fp = Path("test_data_1.json")
+        fp = Path("tests").joinpath("test_data_1.json")
         test_dict = {
             "http://bit.ly/test1": 0,
             "http://bit.ly/test2": 0,
@@ -22,7 +22,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("http://bit.ly/test4" not in test_out, True)
 
     def test_build_dict(self):
-        fp = Path("test_data_2.csv")
+        fp = Path("tests").joinpath("test_data_2.csv")
         test_out = build_bitlink_dict(fp=fp)
         self.assertEqual("http://bit.ly/test1" in test_out, True)
         self.assertEqual(test_out["http://bit.ly/test1"] == "https://test1.com/", True)
@@ -35,8 +35,8 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(len(list(test_out.keys())) == 4, True)
 
     def test_process_click_data(self):
-        encode_fp = Path("test_data_2.csv")
-        decode_fp = Path("test_data_1.json")
+        encode_fp = Path("tests").joinpath("test_data_2.csv")
+        decode_fp = Path("tests").joinpath("test_data_1.json")
         test_out = process_click_data(encode_fp=encode_fp, decode_fp=decode_fp)
         self.assertEqual("https://test1.com/" in test_out, True)
         self.assertEqual(test_out["https://test1.com/"] == 1, True)
