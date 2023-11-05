@@ -6,6 +6,9 @@ from json import loads as jloads
 # Function(s)
 def interpret_file(fp: Path, count_dict: dict, timestamp_filter: int = None) -> dict:
     """
+    This function interprets a JSON line-separated file to extract clicks based on a supplied dictionary. It works
+    on the same principle as a streaming data application and could easily be modified for that approach to utilize
+    a data buffer in place of a file path.
     :param fp: filepath to emulate stream of data
     :param count_dict: storage dictionary to count clicks (doubles as bitlink filter)
     :param timestamp_filter: filter for timestamp
@@ -25,6 +28,10 @@ def interpret_file(fp: Path, count_dict: dict, timestamp_filter: int = None) -> 
 
 def build_bitlink_dict(fp: Path) -> dict:
     """
+    This function builds a translation dictionary from a CSV file with a given structure. Rather than using a library
+    specifically built to handle CSV data, this reads the raw text and interprets it. While this approach is faster, it
+    relies on a consistent format and would break with even basic changes. However, since it is dealing with an assumed
+    static dictionary, this approach can be considered valid.
     :param fp: file path to encoding file
     :return: dict of bitly url with value full url
     """
@@ -39,6 +46,9 @@ def build_bitlink_dict(fp: Path) -> dict:
 
 def process_click_data(encode_fp: Path, decode_fp: Path, debug: bool = False) -> dict:
     """
+    This function combines the two above to process a data file (or data stream) to aggregate the number of clicks
+    based on the created dictionary, then reorders the results into descending order (something that is inefficient in
+    Python but understandable for the output).
     :param encode_fp: file path to encoded links
     :param decode_fp: file path to click data
     :param debug: print intermediate steps if True

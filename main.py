@@ -9,6 +9,8 @@ from json import dump as jdump
 # Execute methods
 def main(encode_fp: Path, decode_fp: Path) -> (dict, dict):
     """
+    A main function to execute both solution approaches and evaluate efficiency and output. Each solution has a
+    timer for a basic performance evaluation.
     :param encode_fp: file path to encode csv
     :param decode_fp: file path to click data
     :return: tuple of solution dictionaries
