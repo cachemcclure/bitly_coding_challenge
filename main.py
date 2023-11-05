@@ -17,8 +17,10 @@ def main(encode_fp: Path, decode_fp: Path) -> (dict, dict):
     """
     start_fast = time.perf_counter()
     fast_out = extract_info(encode_fp=encode_fp, decode_fp=decode_fp)
+    fast_out = [{xx: fast_out[xx]} for xx in fast_out]
     end_fast = time.perf_counter()
     comp_out = process_click_data(encode_fp=encode_fp, decode_fp=decode_fp)
+    comp_out = [{xx: comp_out[xx]} for xx in comp_out]
     end_comp = time.perf_counter()
     fast_time = end_fast - start_fast
     comp_time = end_comp - end_fast
