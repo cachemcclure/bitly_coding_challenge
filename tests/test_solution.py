@@ -8,7 +8,15 @@ from pathlib import Path
 
 
 class MyTestCase(unittest.TestCase):
+    """
+    Rather than separating these into multiple tests, it was simpler for this exercise to include all basic test
+    cases for each function in each test. While not strictly best practice, it serves the function of test coverage.
+    """
+
     def test_interpret_file_1(self):
+        """
+        Unit test for interpret_file function in comprehensive solution
+        """
         fp = Path("tests").joinpath("test_data_1.json")
         test_dict = {
             "http://bit.ly/test1": 0,
@@ -22,6 +30,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual("http://bit.ly/test4" not in test_out, True)
 
     def test_build_dict(self):
+        """
+        Unit test for build_bitlink_dict function in comprehensive solution
+        """
         fp = Path("tests").joinpath("test_data_2.csv")
         test_out = build_bitlink_dict(fp=fp)
         self.assertEqual("http://bit.ly/test1" in test_out, True)
@@ -35,6 +46,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(len(list(test_out.keys())) == 4, True)
 
     def test_process_click_data(self):
+        """
+        Unit test for process_click_data function in comprehensive solution
+        """
         encode_fp = Path("tests").joinpath("test_data_2.csv")
         decode_fp = Path("tests").joinpath("test_data_1.json")
         test_out = process_click_data(encode_fp=encode_fp, decode_fp=decode_fp)
