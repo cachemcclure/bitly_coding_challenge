@@ -28,7 +28,7 @@ functions and focuses more on efficiency, testability, scalability, and applicab
 streaming or batch processing environment (depending on how certain functions are implemented) and utilizes built-in libraries
 rather than including external dependencies.
 
-When you run the Docker image, you'll see that both methods are included in the output. They should both be the same, but there
+When you run the Docker image, you'll see that both methods are included in the output. The outputs should both be the same, but there
 is an efficiency measure posted for each (in this case, a simple performance timer but the memory usage was also significantly
 better for the comprehensive solution in testing). The output from the comprehensive step is also saved in the file named 
 `final_output.json` in the `/code` directory on the Docker image in addition to being printed in the console.
